@@ -12,7 +12,8 @@ describe('Test joli', function () {
     const resultDict = {
       0: 'a',
       4: 'aa',
-      26: 'abc'
+      26: 'abc',
+      254: 'cccc'
     }
 
     it('should return the correct string in different pass', function () {
