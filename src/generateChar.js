@@ -1,19 +1,21 @@
-function generateChar (chars, currentPass) {
-  const str = []
+import memoize from 'fast-memoize'
 
-  const recursion = (passingCount) => {
-    if (passingCount < chars.length) {
-      str.unshift(chars[passingCount])
-      return str.join('')
-    }
+function generateChar(chars, currentPass) {
+	const str = []
 
-    const charIndex = Math.floor(passingCount / chars.length) - 1
-    const remainder = passingCount % chars.length
-    str.unshift(chars[remainder])
-    return recursion(charIndex)
-  }
+	const recursion = memoize((passingCount) => {
+		if (passingCount < chars.length) {
+			str.unshift(chars[passingCount])
+			return str.join('')
+		}
 
-  return recursion(currentPass)
+		const charIndex = Math.floor(passingCount / chars.length) - 1
+		const remainder = passingCount % chars.length
+		str.unshift(chars[remainder])
+		return recursion(charIndex)
+	})
+
+	return recursion(currentPass)
 }
 
 export default generateChar
