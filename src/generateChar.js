@@ -1,3 +1,4 @@
+'use strict'
 function generateChar(chars, currentPass) {
 	const str = []
 

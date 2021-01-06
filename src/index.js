@@ -1,3 +1,4 @@
+'use strict'
 const generateChar = require('./generateChar')
 
 function* uniqueStrGenerator(options) {

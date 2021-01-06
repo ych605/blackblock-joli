@@ -1,3 +1,4 @@
+'use strict'
 const { Benchmark } = require('benchmark')
 const memoized = require('./cases/memoized.js')
 const partialMemoed = require('./cases/partiallyMemoized.js')
