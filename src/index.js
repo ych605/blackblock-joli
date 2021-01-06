@@ -1,4 +1,4 @@
-import generateChar from './generateChar'
+const generateChar = require('./generateChar')
 
 function* uniqueStrGenerator(options) {
 	let i = 0
@@ -8,4 +8,4 @@ function* uniqueStrGenerator(options) {
 	}
 }
 
-export default uniqueStrGenerator
+module.exports = uniqueStrGenerator

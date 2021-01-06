@@ -17,6 +17,7 @@
 	},
 	"scripts": {
 		"test": "npx mocha --recursive './tests/**/*.js' --require esm",
+		"benchmark": "node ./benchmarks/index.spec.js",
 		"build": "node build.js",
 		"prepublish": "yarn build"
 	},
@@ -28,6 +29,7 @@
 		"chai": "^4.2.0",
 		"esbuild": "^0.8.29",
 		"eslint": "^7.16.0",
+		"eslint-config-prettier": "^7.1.0",
 		"eslint-config-standard": "^16.0.2",
 		"eslint-plugin-chai-expect": "^2.2.0",
 		"eslint-plugin-chai-friendly": "^0.6.0",

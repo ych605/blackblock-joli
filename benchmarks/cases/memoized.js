@@ -1,3 +1,5 @@
+const memoize = require('fast-memoize')
+
 function generateChar(chars, currentPass) {
 	const str = []
 
@@ -13,7 +15,9 @@ function generateChar(chars, currentPass) {
 		return recursion(charIndex)
 	}
 
-	return recursion(currentPass)
+	const memoized = memoize(recursion)
+
+	return memoized(currentPass)
 }
 
 module.exports = generateChar

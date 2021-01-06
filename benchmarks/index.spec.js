@@ -1,20 +1,39 @@
-// import memoize from 'fast-memoize'
+const { Benchmark } = require('benchmark')
+const memoized = require('./cases/memoized.js')
+const currentPackage = require('../src/index.js')
+const StackoverflowAnswer = require('./cases/stackoverflowAnswer.js')
 
-// const recursion = (passingCount, str, chars) => {
-// 	if (passingCount < chars.length) {
-// 		str.unshift(chars[passingCount])
-// 		return str.join('')
-// 	}
+const suite = new Benchmark.Suite()
+const charList = 'abcd'
+
+const generator = currentPackage({
+	chars: charList
+})
+
+const stackoverflowGenerator = new StackoverflowAnswer(charList)
+
+suite.add('No memoized, recursion(Current package)', function() {
+	const id = generator.next().value
+})
+
+suite.add('Array without recursion', function() {
+	const id = stackoverflowGenerator.next()
+})
+
+suite.on('cycle', function(event) {
+	console.log(String(event.target))
+})
+
+suite.on('complete', function() {
+	console.log(`Fastest is ${this.filter('fastest').map('name')}`)
+})
+
+suite.run()
+
+// const memoGenerator = memoized({
+// 	chars: charList
+// })
 //
-// 	const charIndex = Math.floor(passingCount / chars.length) - 1
-// 	const remainder = passingCount % chars.length
-// 	str.unshift(chars[remainder])
-// 	return recursion(charIndex, str, chars)
-// }
-//
-// function generateChar(chars, currentPass) {
-// 	const str = []
-// 	return recursion(currentPass, str, chars)
-// }
-//
-// export default generateChar
+// suite.add('Memoized, recursion', function() {
+// 	const id = memoGenerator.next().value
+// })
