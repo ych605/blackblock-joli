@@ -1,5 +1,13 @@
 const memoize = require('fast-memoize')
 
+const divide = (a, b) => a / b
+const memoizedDivide = memoize(divide)
+
+const remainder = (a, b) => a % b
+const memoizedRemainder = memoize(remainder)
+
+const memoizedFloor = memoize(Math.floor)
+
 function generateChar(chars, currentPass) {
 	const str = []
 
@@ -9,15 +17,14 @@ function generateChar(chars, currentPass) {
 			return str.join('')
 		}
 
-		const charIndex = Math.floor(passingCount / chars.length) - 1
-		const remainder = passingCount % chars.length
+		const charIndex =
+			memoizedFloor(memoizedDivide(passingCount, chars.length)) - 1
+		const remainder = memoizedRemainder(passingCount, chars.length)
 		str.unshift(chars[remainder])
 		return recursion(charIndex)
 	}
 
-	const memoized = memoize(recursion)
-
-	return memoized(currentPass)
+	return recursion(currentPass)
 }
 
 function* uniqueStrGenerator(options) {
