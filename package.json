@@ -1,5 +1,5 @@
 {
-	"name": "@blackblock/joli",
+	"name": "@blackblock/joli-string",
 	"version": "0.1.0",
 	"author": "Hugo Sum",
 	"license": "MIT",
@@ -24,12 +24,9 @@
 		"fast-memoize": "^2.5.2"
 	},
 	"devDependencies": {
+		"benchmark": "^2.1.4",
 		"chai": "^4.2.0",
 		"esbuild": "^0.8.29",
-		"esm": "^3.2.25",
-		"mocha": "^8.2.1",
-		"nyc": "^15.1.0",
-		"ramda": "^0.27.1",
 		"eslint": "^7.16.0",
 		"eslint-config-standard": "^16.0.2",
 		"eslint-plugin-chai-expect": "^2.2.0",
@@ -39,6 +36,10 @@
 		"eslint-plugin-mocha": "^8.0.0",
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-promise": "^4.2.1",
-		"eslint-plugin-standard": "^5.0.0"
+		"eslint-plugin-standard": "^5.0.0",
+		"esm": "^3.2.25",
+		"mocha": "^8.2.1",
+		"nyc": "^15.1.0",
+		"ramda": "^0.27.1"
 	}
 }
