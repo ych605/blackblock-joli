@@ -25,7 +25,7 @@ describe('Test joli', function() {
 		})
 
 		it('should return the correct string during different passes', function() {
-			for (let i = 0; i <= maxNum; i++) {
+			for (let i = 0; i <= 100000; i++) {
 				const key = i.toString()
 				const generatedValue = generator.next().value
 
@@ -42,7 +42,7 @@ describe('Test joli', function() {
 		})
 
 		it('should return the correct string during different passes', function() {
-			for (let i = 0; i <= maxNum; i++) {
+			for (let i = 0; i <= 100000; i++) {
 				const key = i.toString()
 				const generatedValue = generator.next().value
 
