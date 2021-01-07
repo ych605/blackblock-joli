@@ -6,6 +6,8 @@ A bullet-proof unique string generator.
 
 ## Features
 
+- **Pure**
+
 - Lightweight and performant
 
 - Well-tested
