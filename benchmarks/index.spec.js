@@ -5,7 +5,6 @@ const partialMemoed = require('./cases/partiallyMemoized.js')
 const currentPackage = require('../src/index.js')
 const StackoverflowAnswer = require('./cases/stackoverflowAnswer.js')
 const incstr = require('incstr')
-const functionGenerator = require('./cases/function.js')
 
 const suite = new Benchmark.Suite()
 const charList = 'abcd'
@@ -28,10 +27,17 @@ const incstrGenerator = incstr.idGenerator({
 	alphabet: charList
 })
 
-const next = functionGenerator(charList, 0)
+const next = require('./cases/function.js')(charList, 0)
 
-suite.add('Function generator', function() {
+const next2 = require('./cases/functionWithStringConcat.js')(charList, 0)
+
+suite.add('Function generator; push array for result', function() {
 	const id = next()
+})
+
+suite.add('Function generator; concat string for result', function() {
+	const id = next2()
+	console.log('check id', id)
 })
 
 suite.add('No memoized, recursion(Current package)', function() {

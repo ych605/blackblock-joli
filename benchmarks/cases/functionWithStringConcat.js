@@ -1,4 +1,3 @@
-'use strict'
 function generateChar(chars, currentPass) {
 	let str = ''
 
@@ -17,4 +16,8 @@ function generateChar(chars, currentPass) {
 	return recursion(currentPass)
 }
 
-module.exports = generateChar
+function generator(symbol, index = 0) {
+	return () => generateChar(symbol, index++)
+}
+
+module.exports = generator
