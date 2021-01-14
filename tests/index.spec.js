@@ -20,14 +20,12 @@ describe('Test joli', function() {
 	})
 
 	describe('if string abcd is used', function() {
-		const generator = joli({
-			chars: 'abcd'
-		})
+		const next = joli('abcd', 0)
 
 		it('should return the correct string during different passes', function() {
-			for (let i = 0; i <= 100000; i++) {
+			for (let i = 0; i <= 1000; i++) {
 				const key = i.toString()
-				const generatedValue = generator.next().value
+				const generatedValue = next()
 
 				if (resultDict.hasOwnProperty(key)) {
 					expect(generatedValue).to.equal(resultDict[key])
@@ -37,14 +35,12 @@ describe('Test joli', function() {
 	})
 
 	describe('if array abcd is used', function() {
-		const generator = joli({
-			chars: ['a', 'b', 'c', 'd']
-		})
+		const next = joli(['a', 'b', 'c', 'd'], 0)
 
 		it('should return the correct string during different passes', function() {
-			for (let i = 0; i <= 100000; i++) {
+			for (let i = 0; i <= 1000; i++) {
 				const key = i.toString()
-				const generatedValue = generator.next().value
+				const generatedValue = next()
 
 				if (resultDict.hasOwnProperty(key)) {
 					expect(generatedValue).to.equal(resultDict[key])

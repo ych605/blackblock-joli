@@ -4,13 +4,12 @@ function generateChar(chars, currentPass) {
 
 	const recursion = (passingCount) => {
 		if (passingCount < chars.length) {
-			str += chars[passingCount]
-			return str
+			return chars[passingCount] + str
 		}
 
 		const charIndex = Math.floor(passingCount / chars.length) - 1
 		const remainder = passingCount % chars.length
-		str += chars[remainder]
+		str = chars[remainder] + str
 		return recursion(charIndex)
 	}
 
