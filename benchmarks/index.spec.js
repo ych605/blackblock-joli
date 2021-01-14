@@ -5,6 +5,7 @@ const partialMemoed = require('./cases/partiallyMemoized.js')
 const currentPackage = require('../src/index.js')
 const StackoverflowAnswer = require('./cases/stackoverflowAnswer.js')
 const incstr = require('incstr')
+const functionGenerator = require('./cases/function.js')
 
 const suite = new Benchmark.Suite()
 const charList = 'abcd'
@@ -24,7 +25,13 @@ const partialMemoGenerator = partialMemoed({
 const stackoverflowGenerator = new StackoverflowAnswer(charList)
 
 const incstrGenerator = incstr.idGenerator({
-	alphabet: 'abcd'
+	alphabet: charList
+})
+
+const next = functionGenerator(charList, 0)
+
+suite.add('Function generator', function() {
+	const id = next()
 })
 
 suite.add('No memoized, recursion(Current package)', function() {
@@ -48,6 +55,9 @@ suite.add('incStr, for-loop', function() {
 })
 
 suite.on('cycle', function(event) {
+	if (event.target.error) {
+		console.log(event.target.error)
+	}
 	console.log(String(event.target))
 })
 
