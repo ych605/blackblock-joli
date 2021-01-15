@@ -1,8 +1,9 @@
 'use strict'
 const generateChar = require('./generateChar')
 
-function uniqueStrGenerator(symbol, index = 0) {
-	return () => generateChar(symbol, index++)
+function generator(symbol, index = 0) {
+	const cache = {}
+	return () => generateChar(symbol, index++, cache)
 }
 
-module.exports = uniqueStrGenerator
+module.exports = generator
