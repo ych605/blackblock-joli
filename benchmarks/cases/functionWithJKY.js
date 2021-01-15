@@ -1,4 +1,4 @@
-function generateChar(chars, currentPass, cache) {
+function generateChar(chars, currentPass) {
     let str = ''
     let passingCount = currentPass
     
