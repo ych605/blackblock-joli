@@ -16,6 +16,12 @@ Folk and run the benchmark to compare this library with other identical librarie
 
 994,451 ops/sec ±2.39% (77 runs sampled)
 
+### Other similar packages
+
+#### [incstr](https://www.npmjs.com/package/incstr)
+
+3,112,393 ops/sec ±2.90% (76 runs sampled)
+
 ## Features
 
 - **Pure**
