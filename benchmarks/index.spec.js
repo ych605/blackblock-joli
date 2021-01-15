@@ -8,10 +8,23 @@ const incstr = require('incstr')
 const suite = new Benchmark.Suite()
 const charList = 'abcd'
 
-const next = require('./cases/functionWithJKY.js')(charList, 0)
+// const next = require('./cases/function.js')(charList, 0)
+//
+// suite.add('Function generator; push array for result', function() {
+// 	const id = next()
+// })
+//
+
+const nextJKY = require('./cases/functionWithJKY.js')(charList, 0)
 
 suite.add('Function JKY', function() {
-	const id = next()
+	const id = nextJKY()
+})
+
+const nextJKY2 = require('./cases/functionWithJKY.js')(charList, 0)
+
+suite.add('Function JKY; custom memo', function() {
+	const id = nextJKY2()
 })
 
 const next2 = require('./cases/functionWithStringConcat.js')(charList, 0)
