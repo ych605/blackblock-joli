@@ -2,63 +2,80 @@
 const { Benchmark } = require('benchmark')
 const memoized = require('./cases/memoized.js')
 const partialMemoed = require('./cases/partiallyMemoized.js')
-const currentPackage = require('../src/index.js')
 const StackoverflowAnswer = require('./cases/stackoverflowAnswer.js')
 const incstr = require('incstr')
 
 const suite = new Benchmark.Suite()
 const charList = 'abcd'
 
-const generator = currentPackage({
-	chars: charList
-})
-
-const memoizedGenerator = memoized({
-	chars: charList
-})
-
-const partialMemoGenerator = partialMemoed({
-	chars: charList
-})
-
-const stackoverflowGenerator = new StackoverflowAnswer(charList)
-
-const incstrGenerator = incstr.idGenerator({
-	alphabet: charList
-})
-
-const next = require('./cases/function.js')(charList, 0)
-
+// const next = require('./cases/function.js')(charList, 0)
+//
+// suite.add('Function generator; push array for result', function() {
+// 	const id = next()
+// })
+//
 const next2 = require('./cases/functionWithStringConcat.js')(charList, 0)
-
-suite.add('Function generator; push array for result', function() {
-	const id = next()
-})
-
+//
 suite.add('Function generator; concat string for result', function() {
 	const id = next2()
-	console.log('check id', id)
+})
+//
+// const next3 = require('./cases/functionWithStringConcatAndMemo.js')(charList, 0)
+//
+// suite.add('Function generator; concat string for result; memoized', function() {
+// 	const id = next3()
+// })
+
+const next4 = require('./cases/functionWithStringConcatAndCustomMemo')(
+	charList,
+	0
+)
+
+suite.add(
+	'Function generator; concat string for result; custom memo',
+	function() {
+		const id = next4()
+		// console.log('check result', id)
+	}
+)
+
+const generator = require('./cases/generator.js')({
+	chars: charList
 })
 
-suite.add('No memoized, recursion(Current package)', function() {
-	const id = generator.next().value
-})
-
-suite.add('Memoized, recursion', function() {
-	const id = memoizedGenerator.next().value
-})
-
-suite.add('Partial Memoized, recursion', function() {
-	const id = partialMemoGenerator.next().value
-})
-
-suite.add('Array without recursion, Stackover Flow Answer', function() {
-	const id = stackoverflowGenerator.next()
-})
-
-suite.add('incStr, for-loop', function() {
-	const id = incstrGenerator()
-})
+// suite.add('No memoized, recursion(Version 0.1.0)', function() {
+// 	const id = generator.next().value
+// })
+//
+// const memoizedGenerator = memoized({
+// 	chars: charList
+// })
+//
+// suite.add('Memoized, recursion', function() {
+// 	const id = memoizedGenerator.next().value
+// })
+//
+// const partialMemoGenerator = partialMemoed({
+// 	chars: charList
+// })
+//
+// suite.add('Partial Memoized, recursion', function() {
+// 	const id = partialMemoGenerator.next().value
+// })
+//
+// const stackoverflowGenerator = new StackoverflowAnswer(charList)
+//
+// suite.add('Array without recursion, Stackover Flow Answer', function() {
+// 	const id = stackoverflowGenerator.next()
+// })
+//
+// const incstrGenerator = incstr.idGenerator({
+// 	alphabet: charList
+// })
+//
+// suite.add('incStr, for-loop', function() {
+// 	const id = incstrGenerator()
+// })
 
 suite.on('cycle', function(event) {
 	if (event.target.error) {

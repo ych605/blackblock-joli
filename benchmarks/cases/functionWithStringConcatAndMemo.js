@@ -1,3 +1,5 @@
+const memoize = require('fast-memoize')
+
 function generateChar(chars, currentPass) {
 	let str = ''
 
@@ -16,7 +18,8 @@ function generateChar(chars, currentPass) {
 }
 
 function generator(symbol, index = 0) {
-	return () => generateChar(symbol, index++)
+	const memoized = memoize(generateChar)
+	return () => memoized(symbol, index++)
 }
 
 module.exports = generator

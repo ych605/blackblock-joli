@@ -1,22 +1,24 @@
 function generateChar(chars, currentPass) {
-	let str = ''
+	const str = []
 
 	const recursion = (passingCount) => {
 		if (passingCount < chars.length) {
-			return chars[passingCount] + str
+			str.unshift(chars[passingCount])
+			return str.join('')
 		}
-
 		const charIndex = Math.floor(passingCount / chars.length) - 1
 		const remainder = passingCount % chars.length
-		str = chars[remainder] + str
+		str.unshift(chars[remainder])
 		return recursion(charIndex)
 	}
-
 	return recursion(currentPass)
 }
 
-function generator(symbol, index = 0) {
-	return () => generateChar(symbol, index++)
+function* uniqueStrGenerator(options) {
+	let i = 0
+	while (true) {
+		yield generateChar(options.chars, i)
+		i++
+	}
 }
-
-module.exports = generator
+module.exports = uniqueStrGenerator
