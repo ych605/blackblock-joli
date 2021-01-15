@@ -1,8 +1,20 @@
 # @blackblock/joli-string
 
-A bullet-proof unique string generator.
+The world fastest Javascript unique string generator.
 
 ![ Gzip Badge](https://img.badgesize.io/winston0410/blackblock-joli/master/src/index.js?compression=gzip&label=gzipped) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ea592083b93a409f8c3df47966a9b167)](https://www.codacy.com/gh/winston0410/blackblock-joli/dashboard?utm_source=github.com&utm_medium=referral&utm_content=winston0410/blackblock-joli&utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/42e433c45488e9e9b818/maintainability)](https://codeclimate.com/github/winston0410/blackblock-joli/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/42e433c45488e9e9b818/test_coverage)](https://codeclimate.com/github/winston0410/blackblock-joli/test_coverage) [![Known Vulnerabilities](https://snyk.io/test/github/winston0410/blackblock-joli/badge.svg?targetFile=package.json)](https://snyk.io/test/github/winston0410/blackblock-joli?targetFile=package.json)
+
+## Benchmark
+
+Folk and run the benchmark to compare this library with other identical libraries
+
+### Version 1.0.0
+
+**3,894,252 ops/sec ±1.28% (78 runs sampled)**
+
+### Version 0.1.0
+
+994,451 ops/sec ±2.39% (77 runs sampled)
 
 ## Features
 
