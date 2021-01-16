@@ -13,12 +13,17 @@
 		".": {
 			"require": "./dist/cjs/index.js",
 			"default": "./dist/esm/index.js"
+		},
+		"./wasm": {
+			"default": "./dist/wasm/index.js"
 		}
 	},
 	"scripts": {
 		"test": "npx mocha --recursive './tests/**/*.js' --require esm",
 		"benchmark": "node ./benchmarks/index.spec.js",
 		"build": "node build.js",
+		"build:rust": "wasm-pack build --out-name index --out-dir dist/wasm --release",
+		"build:rust:benchmark": "wasm-pack build --out-name index --out-dir benchmarks/cases/wasm --release --target nodejs",
 		"prepublish": "yarn build"
 	},
 	"dependencies": {
@@ -43,6 +48,7 @@
 		"incstr": "^1.2.3",
 		"mocha": "^8.2.1",
 		"nyc": "^15.1.0",
-		"ramda": "^0.27.1"
+		"ramda": "^0.27.1",
+		"yargs": "^16.2.0"
 	}
 }

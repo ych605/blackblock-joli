@@ -91,3 +91,6 @@ stats.json
 
 #Ignore prefetch data
 *.fetch.json
+
+#Ignore cargo build result
+target
