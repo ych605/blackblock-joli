@@ -94,3 +94,8 @@ stats.json
 
 #Ignore cargo build result
 target
+
+#wasm
+*.wasm
+*.wasm.map
+*.asm.js

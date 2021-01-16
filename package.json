@@ -20,10 +20,9 @@
 	},
 	"scripts": {
 		"test": "npx mocha --recursive './tests/**/*.js' --require esm",
-		"benchmark": "node ./benchmarks/index.spec.js",
+		"benchmark": "node -r esm ./benchmarks/index.spec.js",
 		"build": "node build.js",
-		"build:rust": "wasm-pack build --out-name index --out-dir dist/wasm --release",
-		"build:rust:benchmark": "wasm-pack build --out-name index --out-dir benchmarks/cases/wasm --release --target nodejs",
+		"build:rust": "wasm-pack build --out-name index --out-dir wasm",
 		"prepublish": "yarn build"
 	},
 	"dependencies": {

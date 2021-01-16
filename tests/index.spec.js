@@ -1,5 +1,5 @@
-// import joli from '../src/index'
-import joli from '../benchmarks/cases/functionWithStringConcatAndCustomMemo'
+import joli from '../src/index'
+// import joli from '../benchmarks/cases/functionWithStringConcatAndCustomMemo'
 const chai = require('chai')
 const expect = chai.expect
 const R = require('ramda')

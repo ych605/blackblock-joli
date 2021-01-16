@@ -7,10 +7,7 @@ const incstr = require('incstr')
 
 const suite = new Benchmark.Suite()
 const charList = 'abcd'
-
-const fn = require('./cases/wasm/index')
-
-console.log('check fn', fn)
+// eslint-disable-next-line
 
 // const next = require('./cases/function.js')(charList, 0)
 //
