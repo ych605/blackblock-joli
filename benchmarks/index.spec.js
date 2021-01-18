@@ -7,6 +7,7 @@ const incstr = require('incstr')
 
 const suite = new Benchmark.Suite()
 const charList = 'abcd'
+// eslint-disable-next-line
 
 // const next = require('./cases/function.js')(charList, 0)
 //
@@ -65,14 +66,6 @@ const memoizedGenerator = memoized({
 
 suite.add('Memoized, recursion', function() {
 	const id = memoizedGenerator.next().value
-})
-
-const partialMemoGenerator = partialMemoed({
-	chars: charList
-})
-
-suite.add('Partial Memoized, recursion', function() {
-	const id = partialMemoGenerator.next().value
 })
 
 const stackoverflowGenerator = new StackoverflowAnswer(charList)

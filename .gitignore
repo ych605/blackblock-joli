@@ -91,3 +91,11 @@ stats.json
 
 #Ignore prefetch data
 *.fetch.json
+
+#Ignore cargo build result
+target
+
+#wasm
+*.wasm
+*.wasm.map
+*.asm.js

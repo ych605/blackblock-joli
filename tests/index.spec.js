@@ -1,3 +1,4 @@
+
 // import joli from '../src/index'
 import joli from '../benchmarks/cases/functionWithJKYAndCustomMemo'
 const chai = require('chai')
